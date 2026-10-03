@@ -326,6 +326,29 @@
                 athletes: 'Max Schmeling, Henry Maske, Christina Hammer',
                 equipment: 'Boxhandschuhe, Zahnschutz, Bandagen'
             }
+            function showOnlySport(sportId) {
+    // Select all elements with the class 'sport-card'
+    const cards = document.querySelectorAll('.sport-card');
+
+    cards.forEach(card => {
+        // If 'all' is clicked OR the card's ID matches the selected sport:
+        if (sportId === 'all' || card.id === sportId) {
+            card.style.display = 'block'; // Show it
+        } else {
+            card.style.display = 'none';  // Hide it completely
+        }
+    });
+
+    // Optional: Hide the general overview/introduction section if a specific sport is selected
+    const introSection = document.getElementById('intro-dashboard');
+    if (introSection) {
+        if (sportId === 'all') {
+            introSection.style.display = 'block';
+        } else {
+            introSection.style.display = 'none'; // Hides the general top/bottom introduction when focused on one sport
+        }
+    }
+}
         ];
 
         let activeFilter = 'all';

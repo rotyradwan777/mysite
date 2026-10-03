@@ -85,14 +85,7 @@
         <div class="border-t border-amber-900/30 bg-espresso-950/80">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2.5">
                 <nav id="sports-nav" class="flex items-center gap-2 overflow-x-auto no-scrollbar scroll-smooth text-sm font-medium">
-                    <!-- Nav items generated via JavaScript -->
-                    <!-- Navigation Bar -->
-<nav>
-    <button onclick="showOnlySport('all')">Alle Sportarten</button>
-    <button onclick="showOnlySport('fussball')">Fußball</button>
-    <button onclick="showOnlySport('basketball')">Basketball</button>
-    <button onclick="showOnlySport('tennis')">Tennis</button>
-</nav>
+                    <!-- Nav items generated via JavaScript-->
                 </nav>
             </div>
         </div>
@@ -325,29 +318,6 @@
                 description: 'Klassischer Kampfsport, der Kraft, Schnelligkeit und Ausdauer vereint.',
                 athletes: 'Max Schmeling, Henry Maske, Christina Hammer',
                 equipment: 'Boxhandschuhe, Zahnschutz, Bandagen'
-            }
-            function showOnlySport(sportId) {
-    // Select all elements with the class 'sport-card'
-    const cards = document.querySelectorAll('.sport-card');
-
-    cards.forEach(card => {
-        // If 'all' is clicked OR the card's ID matches the selected sport:
-        if (sportId === 'all' || card.id === sportId) {
-            card.style.display = 'block'; // Show it
-        } else {
-            card.style.display = 'none';  // Hide it completely
-        }
-    });
-
-    // Optional: Hide the general overview/introduction section if a specific sport is selected
-    const introSection = document.getElementById('intro-dashboard');
-    if (introSection) {
-        if (sportId === 'all') {
-            introSection.style.display = 'block';
-        } else {
-            introSection.style.display = 'none'; // Hides the general top/bottom introduction when focused on one sport
-        }
-    }
 }
         ];
 

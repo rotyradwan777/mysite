@@ -1,643 +1,183 @@
 <!DOCTYPE html>
 <html lang="de" class="scroll-smooth">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sport in Deutschland - Interaktiver Guide</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                     colors: {
-                        deRed: '#DD0000',
-                        deGold: '#FFCC00',
-                        deBlack: '#111111',
-                        athleticBlue: '#0055A5',
-                        athleticDark: '#0b132b',
-                    },
-                    fontFamily: {
-                         sans: ['Plus Jakarta Sans', 'sans-serif'],
-                    }
-                }
-            }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sport in Deutschland - Information Guide</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brandWarm: '#C0392B',
+            brandGold: '#D35400',
+            warmBg: '#FFFDF9',
+            cardBg: '#FFF8F0',
+          },
+          fontFamily: {
+            sans: ['Plus Jakarta Sans', 'sans-serif'],
+          }
         }
-    </script>
-    <style>
-        .perspective-1000 {
-            perspective: 1000px;
-        }
-        .transform-style-3d {
-            transform-style: preserve-3d;
-            }
-        .backface-hidden {
-            backface-visibility: hidden;
-        }
-        .rotate-y-180 {
-            transform: rotateY(180deg);
-        }
-        .germany-gradient-border {
-            border-image: linear-gradient(to right, #000000 33%, #DD0000 33%, #DD0000 66%, #FFCC00 66%) 1;
-        }
-        .hero-pattern {
-            background-color: #0b132b;
-            background-image: radial-gradient(rgba(221, 0, 0, 0.15) 1px, transparent 0);
-            background-size: 24px 24px;
-        }
-    </style>
+      }
+    }
+  </script>
 </head>
-<body class="bg-gray-50 text-gray-800 dark:bg-slate-900 dark:text-gray-100 transition-colors duration-300 font-sans min-h-screen flex flex-col">
+<body class="bg-warmBg text-slate-800 font-sans min-h-screen flex flex-col">
 
-    <header class="sticky top-0 z-40 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-b-4 border-deRed shadow-sm">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-20">
-                
-                <!-- Logo / Title -->
-                <div class="flex items-center gap-3">
-                    <div class="flex h-8 w-10 flex-col rounded overflow-hidden shadow-sm border border-gray-200 dark:border-gray-700">
-                        <div class="h-1/3 bg-black"></div>
-                        <div class="h-1/3 bg-deRed"></div>
-                        <div class="h-1/3 bg-deGold"></div>
-                    </div>
-                    <div>
-                        <h1 class="text-xl sm:text-2xl font-extrabold 
-                            tracking-tight text-gray-900 dark:text-white">
-                            Sport <span class="text-deRed">in</span> Deutschland
-                        </h1>
-                        <p class="text-xs text-gray-500 dark:text-gray-400 
-                            hidden sm:block">Entdecke die deutsche Sportkultur</p>
-                    </div>
-                </div>
-
-                <!-- Navigation Links -->
-                <nav class="hidden md:flex space-x-6 text-sm font-semibold">
-                    <a href="#sports" class="hover:text-deRed 
-                        transition-colors">Sportarten</a>
-                    <a href="#cities" class="hover:text-deRed transition-colors">Sportstädte</a>
-                    <a href="#vocab" class="hover:text-deRed transition-colors">Vokabeln</a>
-                    <a href="#quiz" class="hover:text-deRed transition-colors">Sport-Quiz</a>
-                </nav>
-
-                <!-- Action Controls -->
-                <div class="flex items-center gap-3">
-                    <button id="themeToggleBtn" onclick="toggleDarkMode()" class="p-2.5 rounded-xl bg-gray-100 dark:bg-slate-800 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-slate-700 transition-colors" title="Dunkel/Hell-Modus">
-                        <i class="fa-solid fa-moon dark:hidden"></i>
-                        <i class="fa-solid fa-sun hidden dark:inline"></i>
-                    </button>
-
-                    <a href="#quiz" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-deRed text-white text-sm font-bold shadow-md hover:bg-red-700 transition-all hover:scale-105 active:scale-95">
-                        <i class="fa-solid fa-trophy text-deGold"></i>
-                        <span>Quiz Starten</span>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </header>
-
-    <main class="flex-grow">
-        <section class="hero-pattern relative text-white py-16 sm:py-24 overflow-hidden border-b border-gray-800">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-                <div class="max-w-3xl">
-                    <span class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-bold bg-deGold/20 text-deGold border border-deGold/30 mb-6">
-                        <i class="fa-solid fa-star"></i> Interaktive Lerneinheit
-                    </span>
-                    <h2 class="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-tight mb-6">
-                        Willkommen in der Welt des <span class="text-transparent bg-clip-text bg-gradient-to-r from-deGold via-deRed to-red-400">Deutschen Sports!</span>
-                    </h2>
-                    <p class="text-lg sm:text-xl text-gray-300 mb-8 
-                        leading-relaxed">
-                        Explore Germany’s most popular sports, famous championship cities, essential German sports vocabulary with audio, and test your knowledge with our interactive quiz.
-                    </p>
-                    <div class="flex flex-wrap gap-4">
-                        <a href="#sports" class="px-6 py-3.5 rounded-xl bg-deGold text-slate-900 font-extrabold shadow-lg hover:bg-yellow-400 transition-all transform hover:-translate-y-0.5">
-                            Sportarten Entdecken <i class="fa-solid fa-arrow-down ml-2"></i>
-                        </a>
-                        <a href="#vocab" class="px-6 py-3.5 rounded-xl bg-slate-800/80 text-white font-bold border border-slate-700 hover:bg-slate-700 transition-all">
-                            Vokabeln Lernen <i class="fa-solid fa-volume-high ml-2 text-deGold"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="sports" class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-12">
-                <h2 class="text-3xl font-extrabold text-gray-900 
-                    dark:text-white sm:text-4xl">Beliebte Sportarten in Deutschland</h2>
-                <p class="mt-3 text-lg text-gray-600 dark:text-gray-400">Discover the iconic sports that unite millions of fans across the country.</p>
-            </div>
-
-            <!-- Sports Grid -->
-            <div id="sportsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Dynamic insertion via JavaScript -->
-            </div>
-        </section>
-
-        <section id="cities" class="py-16 bg-gray-100 dark:bg-slate800/50 border-y border-gray-200 dark:border-slate-800">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center max-w-3xl mx-auto mb-12">
-                    <span class="text-deRed font-bold text-sm tracking-wider uppercase">Sportmetropolen</span>
-                    <h2 class="text-3xl font-extrabold text-gray-900 dark:text-white sm:text-4xl mt-1">Deutsche Sportstädte & Vereine</h2>
-                    <p class="mt-3 text-gray-600 dark:text-gray-400">Click on a sports hub to discover its iconic clubs, arenas, and sports heritage.</p>
-                </div>
-
-                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-                    <!-- City Selector Buttons -->
-                    <div class="lg:col-span-5 space-y-3" id="cityButtons">
-                        <!-- Populated by JS -->
-                    </div>
-
-                    <!-- City Info Display -->
-                    <div class="lg:col-span-7 bg-white dark:bg-slate-800 p-8 rounded-2xl shadow-xl border border-gray-200 dark:border-slate-700 min-h-[380px] flex flex-col justify-between" id="cityDetailCard">
-                        <!-- Populated by JS -->
-                    </div>
-                    </div>
-        </section>
-
-        <section id="vocab" class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-12">
-                <span class="text-deRed font-bold text-sm tracking-wider uppercase">Sprachtraining</span>
-                <h2 class="text-3xl font-extrabold text-gray-900 dark:text-white sm:text-4xl mt-1">Sport-Vokabeln (Vocabulary)</h2>
-                <p class="mt-3 text-gray-600 dark:text-gray-400">Click a card to flip it over. Click the audio icon to listen to the German pronunciation!</p>
-            </div>
-
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6" id="vocabGrid">
-                <!-- Populated by JS -->
-                  </div>
-        </section>
-
-        <section id="quiz" class="py-16 bg-slate-900 text-white relative overflow-hidden">
-            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-                <div class="text-center mb-10">
-                    <span class="px-3 py-1 rounded-full text-xs font-bold bg-deGold text-black uppercase tracking-wider">Test Dein Wissen</span>
-                    <h2 class="text-3xl font-extrabold mt-3 sm:text-4xl">Deutsches Sport-Quiz</h2>
-                    <p class="text-gray-400 mt-2">Test your knowledge of German sports and vocabulary!</p>
-                </div>
-
-                <!-- Quiz Card Container -->
-                <div class="bg-slate-800 rounded-2xl p-6 sm:p-10 shadow-2xl border border-slate-700" id="quizContainer">
-                    <!-- Dynamic quiz content -->
-                    <div id="modalContent">
-                <!-- Dynamic Modal Content -->
-            </div>
-        </div>
+  <!-- Header -->
+  <header class="bg-gradient-to-r from-amber-700 via-orange-600 to-red-600 text-white shadow-md sticky top-0 z-50">
+    <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
+      <div class="flex items-center space-x-3">
+        <i class="fa-solid fa-trophy text-amber-300 text-2xl"></i>
+        <h1 class="font-extrabold text-xl tracking-tight">Sport in Deutschland</h1>
+      </div>
+      <nav class="space-x-6 font-semibold text-sm">
+        <a href="#fakten" class="hover:text-amber-200 transition-colors">Fakten</a>
+        <a href="#sportarten" class="hover:text-amber-200 transition-colors">Sportarten</a>
+        <a href="#vokabeln" class="hover:text-amber-200 transition-colors">Vokabeln</a>
+      </nav>
     </div>
+  </header>
 
-    <footer class="bg-slate-950 text-gray-400 py-8 border-t border-slate-800 text-center text-sm">
-        <div class="max-w-7xl mx-auto px-4">
-            <p>© 2026 Sport in Deutschland - Interaktiver Lernguide. Gemacht für Deutschlerner & Sportfans.</p>
+  <!-- Hero Section -->
+  <section class="bg-amber-50 border-b border-orange-100 py-12 px-4">
+    <div class="max-w-4xl mx-auto text-center">
+      <span class="inline-block px-3 py-1 bg-orange-100 text-orange-800 rounded-full text-xs font-bold uppercase tracking-wider mb-3">Kulturelle Übersicht</span>
+      <h2 class="text-3xl sm:text-5xl font-extrabold text-amber-950 mb-4">Die Deutsche Sportkultur</h2>
+      <p class="text-lg text-amber-900 leading-relaxed">
+        Sport spielt in Deutschland eine zentrale Rolle. Über 27 Millionen Menschen sind Mitglied in einem der 87.000 Sportvereine im ganzen Land.
+      </p>
+    </div>
+  </section>
+
+  <!-- Quick Facts -->
+  <section id="fakten" class="max-w-6xl mx-auto px-4 py-12">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="bg-cardBg border border-orange-200 rounded-2xl p-6 text-center shadow-sm">
+        <div class="w-12 h-12 mx-auto mb-3 bg-orange-500 text-white rounded-full flex items-center justify-center text-xl">
+          <i class="fa-solid fa-users"></i>
         </div>
-    </footer>
+        <h3 class="text-2xl font-bold text-amber-950 mb-1">27+ Millionen</h3>
+        <p class="text-sm text-amber-800">Aktive Mitglieder in lokalen Sportvereinen</p>
+      </div>
 
-             <script>
-        // --- DATA STRUCTURES ---
+      <div class="bg-cardBg border border-orange-200 rounded-2xl p-6 text-center shadow-sm">
+        <div class="w-12 h-12 mx-auto mb-3 bg-red-600 text-white rounded-full flex items-center justify-center text-xl">
+          <i class="fa-solid fa-futbol"></i>
+        </div>
+        <h3 class="text-2xl font-bold text-amber-950 mb-1">Fußball #1</h3>
+        <p class="text-sm text-amber-800">Der beliebteste und meistgesehene Sport im Land</p>
+      </div>
 
-        const sportsData = [
-            {
-                id: 'fussball',
-                titleDe: 'Fußball',
-                titleEn: 'Football / Soccer',
-                icon: 'fa-football',
-                tag: 'König Sport',
-                shortDesc: 'Die unangefochtene Nummer 1 in Deutschland mit der berühmten Bundesliga.',
-                image: 'https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&w=800&q=80',
-                history: 'Fußball ist mit über 7 Millionen Mitgliedern im Deutschen Fußball-Bund (DFB) der beliebteste Sport in Deutschland. Deutschland hat 4 Weltmeisterschaften (1954, 1974, 1990, 2014) gewonnen.',
-                athletes: ['Manuel Neuer', 'Franz Beckenbauer', 'Thomas Müller', 'Bastian Schweinsteiger'],
-                keyTerm: 'Die Mannschaft (The Team)'
-            },
-            {
-                id: 'handball',
-                titleDe: 'Handball',
-                titleEn: 'Handball',
-                icon: 'fa-volleyball',
-                tag: 'Schnell & Dynamisch',
-                shortDesc: 'Extrem populär in Hallen mit der stärksten Liga der Welt (HBL).',
-                image: 'https://images.unsplash.com/photo-1519766304817-4f37bda74a29?auto=format&fit=crop&w=800&q=80',
-                history: 'Modernes Handball wurde zu Beginn des 20. Jahrhunderts in Deutschland mitgestaltet. Die Liqui Moly HBL gilt als die beste und intensivste Handball-Liga der Welt.',
-                athletes: ['Uwe Gensheimer', 'Stefan Kretzschmar', 'Andreas Wolff'],
-                keyTerm: 'Das Hallenspiel (Indoor Game)'
-            },
-            {
-                id: 'tennis',
-                titleDe: 'Tennis',
-                titleEn: 'Tennis',
-                icon: 'fa-baseball-bat-ball',
-                  tag: 'Präzision',
-                shortDesc: 'Reiche Tradition mit legendären Grand-Slam-Champions.',
-                image: 'https://images.unsplash.com/photo-1595435934249-5df7ed86e1c0?auto=format&fit=crop&w=800&q=80',
-                history: 'In den 1980er und 1990er Jahren erlebte Deutschland durch Boris Becker und Steffi Graf einen gewaltigen Tennis-Boom. Steffi Graf gewann 22 Grand-Slam-Titel.',
-                athletes: ['Steffi Graf', 'Boris Becker', 'Alexander Zverev', 'Angelique Kerber'],
-                keyTerm: 'Der Aufschlag (The Serve)'
-            },
-            {
-                id: 'motorsport',
-                titleDe: 'Motorsport / Formel 1',
-                titleEn: 'Motorsport / Formula 1',
-                icon: 'fa-car-side',
-                tag: 'Geschwindigkeit',
-                shortDesc: 'Deutschland ist die Heimat von Rennsport-Legenden und weltbekannten Herstellern.',
-                 image: 'https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?auto=format&fit=crop&w=800&q=80',
-                history: 'Mit Herstellern wie Mercedes, Porsche und BMW sowie legendären Rennstrecken wie dem Nürburgring hat Motorsport tiefe Wurzeln in der deutschen Kultur.',
-                athletes: ['Michael Schumacher (7x Weltmeister)', 'Sebastian Vettel (4x Weltmeister)', 'Nico Rosberg'],
-                 keyTerm: 'Die Rennstrecke (Racetrack)'
-            },
-            {
-                id: 'wintersport',
-                titleDe: 'Wintersport & Skispringen',
-                titleEn: 'Winter Sports & Ski Jumping',
-                icon: 'fa-person-skiing',
-                tag: 'Saisonaler Favorit',
-                shortDesc: 'Dominanz im Biathlon, Rodeln, Bobfahren und Skispringen.',
-                image: 'https://images.unsplash.com/photo-1551698618-1dfe5d97d256?auto=format&fit=crop&w=800&q=80',
-                history: 'In den Wintermonaten verfolgen Millionen Deutsche Biathlon und die Vierschanzentournee im Fernsehen. Deutschland führt oft den Medaillenspiegel bei Olympischen Winterspielen an.',
-                athletes: ['Sven Hannawald', 'Magdalena Neuner', 'Felix Loch'],
-                keyTerm: 'Die Schanze (Ski Jump Hill)'
-            },
-            {
-                id: 'basketball',
-                titleDe: 'Basketball',
-                titleEn: 'Basketball',
-                icon: 'fa-basketball',
-                tag: 'Aufstrebend',
-                shortDesc: 'Weltmeister 2023! Ein Sport mit rasant wachsender Beliebtheit.',
-                image: 'https://images.unsplash.com/photo-1546519638-68e109498ffc?auto=format&fit=crop&w=800&q=80',
-                history:  'In den Wintermonaten verfolgen Millionen Deutsche Biathlon und die Vierschanzentournee im Fernsehen. Deutschland führt oft den Medaillenspiegel bei Olympischen Winterspielen an.',
-                athletes: ['Sven Hannawald', 'Magdalena Neuner', 'Felix Loch'],
-                keyTerm: 'Die Schanze (Ski Jump Hill)'
-            },
-            {
-                id: 'basketball',
-                titleDe: 'Basketball',
-                titleEn: 'Basketball',
-                icon: 'fa-basketball',
-                tag: 'Aufstrebend',
-                shortDesc: 'Weltmeister 2023! Ein Sport mit rasant wachsender Beliebtheit.',
-                 image: 'https://images.unsplash.com/photo-1546519638-68e109498ffc?auto=format&fit=crop&w=800&q=80',
-                history: 'Spätestens seit Dirk Nowitzki die NBA eroberte, ist Basketball fest verankert. 2023 krönte sich die deutsche Nationalmannschaft zum sensationellen Weltmeister.',
-                athletes: ['Dirk Nowitzki', 'Dennis Schröder', 'Franz Wagner'],
-                keyTerm: 'Der Korblerner (Basket shooter)'
-            }
-        ];
+      <div class="bg-cardBg border border-orange-200 rounded-2xl p-6 text-center shadow-sm">
+        <div class="w-12 h-12 mx-auto mb-3 bg-amber-600 text-white rounded-full flex items-center justify-center text-xl">
+          <i class="fa-solid fa-medal"></i>
+        </div>
+        <h3 class="text-2xl font-bold text-amber-950 mb-1">Olympia</h3>
+        <p class="text-sm text-amber-800">Eine der erfolgreichsten Nationen bei Olympischen Spielen</p>
+      </div>
+    </div>
+  </section>
 
-        const cityData = [
-            {
-                id: 'munich',
-                cityName: 'München',
-                sportTitle: 'Die Heimat des FC Bayern',
-                icon: 'fa-monument',
-                desc: 'München ist eine der weltweit bekanntesten Sportstädte. Der FC Bayern München dominiert seit Jahrzehnten den deutschen Fußball. Zudem ist der Olympiapark von 1972 ein architektonisches Meisterwerk.',
-                highlights: ['FC Bayern München (Fußball)', 'Olympiastadion & Olympiapark', 'EHC Red Bull München (Eishockey)'],
-                stadium: 'Allianz Arena (75.000 Plätze)'
-            },
-            {
-                id: 'dortmund',
-                cityName: 'Dortmund',
-                sportTitle: 'Die Gelbe Wand im Ruhrgebiet',
-                icon: 'fa-drum',
-                desc: 'Dortmund lebt und atmet Fußball. Der Borussia Dortmund (BVB) besitzt eines der stimmungsvollsten Stadien der Welt mit der berühmten Südtribüne ("Gelbe Wand").',
-                highlights: ['Borussia Dortmund (BVB)', 'Deutsches Fußballmuseum', 'Signal Iduna Park'],
-                stadium: 'Signal Iduna Park / Westfalenstadion (81.365 Plätze)'
-                   },
-            {
-                id: 'berlin',
-                cityName: 'Berlin',
-                sportTitle: 'Die Vielseitige Sportmetropole',
-                 icon: 'fa-landmark',
-                desc: 'Als Hauptstadt bietet Berlin eine enorme Vielfalt: Marathon-Weltrekorde, Basketball (ALBA Berlin), Handball (Füchse Berlin) und das historische Olympiastadion.',
-                highlights: ['BMW Berlin-Marathon', 'ALBA Berlin (Basketball)', '1. FC Union Berlin & Hertha BSC'],
-                stadium: 'Olympiastadion Berlin'
-            },
-            {
-                id: 'hamburg',
-                cityName: 'Hamburg',
-                sportTitle: 'Sport an der Elbe & Tennis-Tradition',
-                icon: 'fa-ship',
-                desc: 'Hamburg steht für traditionellen Wassersport, das berühmte Tennisturnier am Rothenbaum und begeisterte Fans beim Hamburger SV und FC St. Pauli.',
-                highlights: ['Hamburger SV & FC St. Pauli', 'Rothenbaum Tennis Tournament', 'Hamburg Marathon'],
-                stadium: 'Volksparkstadion & Millerntor-Stadion'
-            }
-        ];
+  <!-- Main Sports Information -->
+  <section id="sportarten" class="max-w-6xl mx-auto px-4 py-8">
+    <h2 class="text-3xl font-extrabold text-amber-950 mb-8 border-b-2 border-orange-200 pb-2">Die beliebtesten Sportarten</h2>
 
-                  const vocabData = [
-            { de: 'die Mannschaft', en: 'the team', category: 'General' },
-            { de: 'das Tor', en: 'the goal', category: 'Football' },
-            { de: 'der Sieg', en: 'the victory', category: 'General' },
-            { de: 'der Schiedsrichter', en: 'the referee', category: 'General' },
-            { de: 'gewinnen', en: 'to win', category: 'Verb' },
-            { de: 'verlieren', en: 'to lose', category: 'Verb' },
-            { de: 'der Weltmeister', en: 'the world champion', category: 'General' },
-            { de: 'der Ball', en: 'the ball', category: 'General' }
-        ];
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- Fußball -->
+      <div class="bg-white border border-orange-200 rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow">
+        <div class="text-red-600 text-3xl mb-3"><i class="fa-solid fa-futbol"></i></div>
+        <h3 class="text-xl font-bold text-amber-950 mb-2">1. Fußball</h3>
+        <p class="text-slate-600 text-sm leading-relaxed mb-4">
+          Fußball ist ohne Zweifel der Volkssport Nummer eins in Deutschland. Die Bundesliga zieht jede Woche Hunderttausende Fans in die Stadien. Der Deutsche Fußball-Bund (DFB) ist der größte Fachsportverband der Welt.
+        </p>
+        <span class="inline-block bg-orange-100 text-orange-800 text-xs font-semibold px-2.5 py-1 rounded">4x Weltmeister</span>
+      </div>
 
-                  const quizQuestions = [
-            {
-                question: 'Welcher Sport gilt als "König Sport" und ist die Nummer 1 in Deutschland?',
-                options: ['Handball', 'Fußball', 'Tennis', 'Skispringen'],
-                correct: 1,
-                explanation: 'Fußball ist mit über 7 Millionen Mitgliedern im DFB der populärste Sport in Deutschland.'
-            },
-            {
-                question: 'Wie oft hat die deutsche Fußball-Nationalmannschaft der Herren die Weltmeisterschaft gewonnen?',
-                options: ['2 Mal', '3 Mal', '4 Mal', '5 Mal'],
-                correct: 2,
-                explanation: 'Deutschland gewann die WM in den Jahren 1954, 1974, 1990 und 2014.'
-            },
-            {
-                question: 'Was bedeutet das deutsche Wort "der Schiedsrichter"?',
-                options: ['The Coach', 'The Player', 'The Referee', 'The Stadium'],
-                correct: 2,
-                explanation: '"Der Schiedsrichter" leitet das Spiel und achtet 
-                    auf die Regeln.'
-            },
-            {
-                question: 'Welcher deutsche Formel-1-Fahrer gewann 7 Weltmeistertitel?',
-                options: ['Sebastian Vettel', 'Nico Rosberg', 'Mick Schumacher', 'Michael Schumacher'],
-                 correct: 3,
-                explanation: 'Michael Schumacher ist einer der erfolgreichsten Rennfahrer der Geschichte.'
-            },
-            {
-                question: 'Welches Land wurde 2023 Weltmeister im Herren-Basketball?',
-                options: ['USA', 'Deutschland', 'Serbien', 'Spanien'],
-                correct: 1,
-                explanation: 'Deutschland schlug Serbien im Finale und wurde ungeschlagen Basketball-Weltmeister 2023!'
-            }
-        ];
+      <!-- Handball -->
+      <div class="bg-white border border-orange-200 rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow">
+        <div class="text-amber-600 text-3xl mb-3"><i class="fa-solid fa-hands-sport"></i></div>
+        <h3 class="text-xl font-bold text-amber-950 mb-2">2. Handball</h3>
+        <p class="text-slate-600 text-sm leading-relaxed mb-4">
+          Deutschland gilt als Mutterland des Hallenhandballs. Die Handball-Bundesliga (HBL) ist eine der stärksten und am besten besuchten Ligen weltweit.
+        </p>
+        <span class="inline-block bg-orange-100 text-orange-800 text-xs font-semibold px-2.5 py-1 rounded">Hallen-Tradition</span>
+      </div>
 
-        // --- STATE MANAGEMENT ---
-        let currentCityIndex = 0;
-        let currentQuizIndex = 0;
-        let quizScore = 0;
-        let quizAnswered = false;
+      <!-- Wintersport -->
+      <div class="bg-white border border-orange-200 rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow">
+        <div class="text-orange-600 text-3xl mb-3"><i class="fa-solid fa-person-skiing"></i></div>
+        <h3 class="text-xl font-bold text-amber-950 mb-2">3. Wintersport</h3>
+        <p class="text-slate-600 text-sm leading-relaxed mb-4">
+          In den Wintermonaten verfolgen Millionen Menschen Disziplinen wie Biathlon, Skispringen und Rodeln. Deutschland erzielt hier regelmäßig Höchstleistungen bei Olympia.
+        </p>
+        <span class="inline-block bg-orange-100 text-orange-800 text-xs font-semibold px-2.5 py-1 rounded">Biathlon & Skispringen</span>
+      </div>
 
-        // --- RENDER FUNCTIONS ---
+      <!-- Tennis -->
+      <div class="bg-white border border-orange-200 rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow">
+        <div class="text-yellow-600 text-3xl mb-3"><i class="fa-solid fa-baseball"></i></div>
+        <h3 class="text-xl font-bold text-amber-950 mb-2">4. Tennis</h3>
+        <p class="text-slate-600 text-sm leading-relaxed mb-4">
+          Durch Legenden wie Boris Becker und Steffi Graf wurde Tennis sehr populär. Auch heute gehört Deutschland zu den Ländern mit den meisten Tennisplätzen und Vereinen.
+        </p>
+        <span class="inline-block bg-orange-100 text-orange-800 text-xs font-semibold px-2.5 py-1 rounded">Große Geschichte</span>
+      </div>
 
-                  function renderSports() {
-            const container = document.getElementById('sportsGrid');
-            container.innerHTML = sportsData.map((s, index) => `
-                <div class="bg-white dark:bg-slate-800 rounded-2xl overflow-hidden shadow-lg border border-gray-100 dark:border-slate-700/60 hover:shadow-2xl transition-all duration-300 flex flex-col group">
-                    <div class="relative h-48 overflow-hidden">
-                        <img src="${s.image}" alt="${s.titleDe}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" onerror="this.src='https://placehold.co/600x400/0b132b/ffffff?text=${s.titleDe}'">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
-                        <span class="absolute top-3 right-3 bg-deRed text-white text-xs font-bold px-3 py-1 rounded-full shadow">
-                            ${s.tag}
-                        </span>
-                        <div class="absolute bottom-3 left-4 text-white">
-                            <h3 class="text-2xl font-black">${s.titleDe}</h3>
-                            <p class="text-xs text-deGold font-medium">${s.titleEn}</p>
-                        </div>
-                         </div>
-                    <div class="p-6 flex-grow flex flex-col justify-between">
-                        <p class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed mb-6">
-                            ${s.shortDesc}
-                        </p>
-                        <button onclick="openModal('${s.id}')" class="w-full py-2.5 px-4 rounded-xl bg-gray-100 dark:bg-slate-700 hover:bg-deRed hover:text-white dark:hover:bg-deRed text-gray-800 dark:text-gray-100 font-bold text-sm transition-colors flex items-center justify-center gap-2">
-                            <span>Mehr erfahren</span>
-                              <i class="fa-solid fa-chevron-right text-xs"></i>
-                        </button>
-                    </div>
-                </div>
-            `).join('');
-        }
+      <!-- Motorsport -->
+      <div class="bg-white border border-orange-200 rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow">
+        <div class="text-red-700 text-3xl mb-3"><i class="fa-solid fa-flag-checkered"></i></div>
+        <h3 class="text-xl font-bold text-amber-950 mb-2">5. Motorsport</h3>
+        <p class="text-slate-600 text-sm leading-relaxed mb-4">
+          Dank Legenden wie Michael Schumacher und Sebastian Vettel hat Motorsport eine riesige Fanbasis. Deutsche Automobilhersteller prägen den weltweiten Rennsport.
+        </p>
+        <span class="inline-block bg-orange-100 text-orange-800 text-xs font-semibold px-2.5 py-1 rounded">Formel 1 & DTM</span>
+      </div>
 
-        function renderCitySection() {
-            const btnContainer = document.getElementById('cityButtons');
-            const detailContainer = document.getElementById('cityDetailCard');
+      <!-- Leichtathletik -->
+      <div class="bg-white border border-orange-200 rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow">
+        <div class="text-amber-700 text-3xl mb-3"><i class="fa-solid fa-person-running"></i></div>
+        <h3 class="text-xl font-bold text-amber-950 mb-2">6. Leichtathletik</h3>
+        <p class="text-slate-600 text-sm leading-relaxed mb-4">
+          Laufen, Werfen und Springen gehören zu den Grundlagen des Sports. Das Turnen und die Leichtathletik bilden das Fundament der Sporterziehung in Schulen.
+        </p>
+        <span class="inline-block bg-orange-100 text-orange-800 text-xs font-semibold px-2.5 py-1 rounded">Schul- & Breitensport</span>
+      </div>
+    </div>
+  </section>
 
-            btnContainer.innerHTML = cityData.map((c, idx) => `
-                <button onclick="selectCity(${idx})" class="w-full text-left p-4 rounded-xl border transition-all flex items-center justify-between ${idx === currentCityIndex ? 'bg-deRed text-white border-deRed shadow-md scale-[1.02]' : 'bg-white dark:bg-slate-800 text-gray-800 dark:text-gray-200 border-gray-200 dark:border-slate-700 hover:border-deRed/50'}">
-                    <div class="flex items-center gap-3">
-                        <i class="fa-solid ${c.icon} text-lg ${idx === currentCityIndex ? 'text-deGold' : 'text-deRed'}"></i>
-                        <span class="font-extrabold text-lg">${c.cityName}</span>
-                         </div>
-                    <i class="fa-solid fa-arrow-right text-sm opacity-70"></i>
-                </button>
-            `).join('');
+  <!-- Vocabulary Section -->
+  <section id="vokabeln" class="bg-amber-100/50 py-12 px-4 mt-8 border-t border-orange-200">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-3xl font-extrabold text-amber-950 mb-6 text-center">Wichtige Sport-Vokabeln</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+        <div class="bg-white p-4 rounded-xl border border-orange-200 shadow-sm flex justify-between items-center">
+          <span class="font-bold text-amber-950">Der Sportverein</span>
+          <span class="text-xs text-amber-800 bg-orange-100 px-2 py-1 rounded">Sports Club</span>
+        </div>
+        <div class="bg-white p-4 rounded-xl border border-orange-200 shadow-sm flex justify-between items-center">
+          <span class="font-bold text-amber-950">Die Mannschaft</span>
+          <span class="text-xs text-amber-800 bg-orange-100 px-2 py-1 rounded">The Team</span>
+        </div>
+        <div class="bg-white p-4 rounded-xl border border-orange-200 shadow-sm flex justify-between items-center">
+          <span class="font-bold text-amber-950">Das Spiel</span>
+          <span class="text-xs text-amber-800 bg-orange-100 px-2 py-1 rounded">The Game</span>
+        </div>
+        <div class="bg-white p-4 rounded-xl border border-orange-200 shadow-sm flex justify-between items-center">
+          <span class="font-bold text-amber-950">Der Sieg</span>
+          <span class="text-xs text-amber-800 bg-orange-100 px-2 py-1 rounded">Victory / Win</span>
+        </div>
+      </div>
+    </div>
+  </section>
 
-            const activeCity = cityData[currentCityIndex];
-            detailContainer.innerHTML = `
-                <div>
-                    <div class="flex items-center justify-between mb-4 border-b pb-3 border-gray-100 dark:border-slate-700">
-                        <h3 class="text-2xl font-black text-gray-900 dark:text-white">${activeCity.cityName}</h3>
-                        <span class="text-xs font-bold px-3 py-1 rounded-full bg-deGold/20 text-yellow-700 dark:text-deGold border border-deGold/40">
-                            <i class="fa-solid fa-location-dot mr-1"></i> Deutschland
-                        </span>
-                    </div>
-                    <h4 class="text-lg font-bold text-deRed mb-3">${activeCity.sportTitle}</h4>
-                    <p class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed mb-6">${activeCity.desc}</p>
-                    
-                    <div class="space-y-2 mb-6">
-                        <h5 class="text-xs font-bold uppercase text-gray-400 tracking-wider">Highlights & Teams:</h5>
-                        <ul class="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                            ${activeCity.highlights.map(h => `
-                                <li class="flex items-center gap-2 text-sm 
-                                text-gray-700 dark:text-gray-200 font-medium">
-                                    <i class="fa-solid fa-check text-deRed text-xs"></i> ${h}
-                                </li>
-                            `).join('')}
-                        </ul>
-                    </div>
-                </div>
-                
-                <div class="pt-4 border-t border-gray-100 dark:border-slate-700 flex items-center justify-between text-xs text-gray-500 dark:text-gray-400">
-                    <span><i class="fa-solid fa-stadium-storm mr-1"></i> Hauptarena: <strong>${activeCity.stadium}</strong></span>
-                </div>
-            `;
-        }
+  <!-- Footer -->
+  <footer class="bg-amber-950 text-amber-200 py-6 text-center text-xs mt-auto">
+    <p>© 2026 Sport in Deutschland Information Guide. Prepared for GitHub Pages.</p>
+  </footer>
 
-        function selectCity(idx) {
-            currentCityIndex = idx;
-            renderCitySection();
-        }
-                  function renderVocab() {
-            const container = document.getElementById('vocabGrid');
-            container.innerHTML = vocabData.map((v, i) => `
-                <div class="h-44 perspective-1000 group cursor-pointer" onclick="flipCard(${i})">
-                    <div id="flashcard-${i}" class="relative w-full h-full duration-500 transform-style-3d transition-transform shadow-md hover:shadow-xl rounded-2xl">
-                        <!-- Front side (German) -->
-                        <div class="absolute inset-0 w-full h-full bg-white dark:bg-slate-800 border-2 border-gray-100 dark:border-slate-700 rounded-2xl p-4 flex flex-col justify-between items-center text-center backface-hidden">
-                            <span class="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-gray-100 dark:bg-slate-700 text-gray-500">${v.category}</span>
-                            <div>
-                                <h3 class="text-xl font-black text-gray-900 dark:text-white">${v.de}</h3>
-                                <p class="text-xs text-gray-400 mt-1">Klicken
-                                zum Wenden</p>
-                            </div>
-                            <button onclick="event.stopPropagation(); speakGerman('${v.de}')" class="p-2 rounded-full bg-deRed/10 text-deRed hover:bg-deRed hover:text-white transition-colors" title="Aussprache hören">
-                                <i class="fa-solid fa-volume-high"></i>
-                            </button>
-                        </div>
-                        <!-- Back side (English) -->
-                        <div class="absolute inset-0 w-full h-full bg-gradient-to-br from-slate-800 to-slate-900 text-white rounded-2xl p-4 flex flex-col 
-                        justify-center items-center text-center backface-hidden rotate-y-180 border-2 border-deRed">
-                            <span class="text-xs text-deGold font-bold uppercase tracking-wider mb-2">Translation</span>
-                            <h3 class="text-xl font-bold">${v.en}</h3>
-                            <p class="text-xs text-gray-400 mt-3">${v.de}</p>
-                        </div>
-                    </div>
-                </div>
-            `).join('');
-        }
-
-        function flipCard(idx) {
-            const card = document.getElementById(`flashcard-${idx}`);
-            card.classList.toggle('rotate-y-180');
-        }
-
-        function speakGerman(text) {
-            if ('speechSynthesis' in window) {
-                const utterance = new SpeechSynthesisUtterance(text);
-                utterance.lang = 'de-DE';
-                utterance.rate = 0.9;
-                window.speechSynthesis.speak(utterance);
-            } else {
-                     alert('Audio-Aussprache wird von Ihrem Browser leider nicht unterstützt.');
-            }
-        }
-
-        function renderQuiz() {
-            const container = document.getElementById('quizContainer');
-
-            if (currentQuizIndex >= quizQuestions.length) {
-                // Quiz Complete View
-                container.innerHTML = `
-                    <div class="text-center py-6">
-                        <div class="w-20 h-20 bg-deGold/20 text-deGold rounded-full flex items-center justify-center mx-auto mb-4 text-3xl">
-                            <i class="fa-solid fa-trophy"></i>
-                        </div>
-                        <h3 class="text-3xl font-black mb-2">Quiz Abgeschlossen!</h3>
-                        <p class="text-gray-300 text-lg mb-6">Ergebnis: 
-                        <strong class="text-deGold text-2xl">${quizScore}</strong> von <strong>${quizQuestions.length}</strong> richtig!</p>
-                        <button onclick="restartQuiz()" class="px-8 py-3.5 rounded-xl bg-deRed text-white font-bold hover:bg-red-700 transition-all shadow-lg">
-                            <i class="fa-solid fa-rotate-right mr-2"></i> Erneut versuchen
-                        </button>
-                    </div>
-                `;
-                return;
-            }
-
-            const q = quizQuestions[currentQuizIndex];
-            container.innerHTML = `
-                <div>
-                    <div class="flex items-center justify-between text-xs font-bold text-gray-400 mb-6 border-b border-slate-700 pb-3">
-                        <span>Frage ${currentQuizIndex + 1} von $
-                {quizQuestions.length}</span>
-                        <span>Punktestand: ${quizScore}</span>
-                    </div>
-
-                    <h3 class="text-xl sm:text-2xl font-bold mb-6 text-white leading-snug">${q.question}</h3>
-
-                    <div class="space-y-3 mb-6">
-                        ${q.options.map((opt, i) => `
-                            <button onclick="checkAnswer(${i})" id="opt-${i}" class="w-full text-left p-4 rounded-xl bg-slate-700/60 border border-slate-600 hover:border-deGold text-white font-medium transition-all flex items-center justify-between group">
-                                <span>${opt}</span>
-                                <i class="fa-regular fa-circle text-gray-400 group-hover:text-deGold"></i>
-                                </button>
-                        `).join('')}
-                    </div>
-
-                    <div id="quizFeedback" class="hidden p-4 rounded-xl text-sm font-medium mb-6"></div>
-
-                    <div class="flex justify-end">
-                        <button id="nextBtn" onclick="nextQuestion()" class="hidden px-6 py-2.5 rounded-xl bg-deGold text-slate-900 font-bold hover:bg-yellow-400 transition-all">
-                            Nächste Frage <i class="fa-solid fa-arrow-right ml-1"></i>
-                        </button>
-                    </div>
-                </div>
-            `;
-            quizAnswered = false;
-        }
-
-        function checkAnswer(selectedIdx) {
-            if (quizAnswered) return;
-            quizAnswered = true;
-
-            const q = quizQuestions[currentQuizIndex];
-             const feedbackEl = document.getElementById('quizFeedback');
-            const nextBtn = document.getElementById('nextBtn');
-
-            q.options.forEach((_, i) => {
-                const btn = document.getElementById(`opt-${i}`);
-                btn.disabled = true;
-                if (i === q.correct) {
-                    btn.classList.remove('bg-slate-700/60', 'border-slate-600');
-                    btn.classList.add('bg-emerald-600/30', 'border-emerald-500', 'text-emerald-200');
-                } else if (i === selectedIdx) {
-                    btn.classList.remove('bg-slate-700/60', 'border-slate-600');
-                    btn.classList.add('bg-rose-600/30', 'border-rose-500', 'text-rose-200');
-                }
-            });
-
-            if (selectedIdx === q.correct) {
-                quizScore++;
-                feedbackEl.className = 'p-4 rounded-xl text-sm font-medium mb-6 bg-emerald-950/80 border border-emerald-500/50 
-                    text-emerald-200';
-                feedbackEl.innerHTML = `<i class="fa-solid fa-circle-check text-emerald-400 mr-2"></i> <strong>Richtig!</strong> ${q.explanation}`;
-            } else {
-                feedbackEl.className = 'p-4 rounded-xl text-sm font-medium mb-6 bg-rose-950/80 border border-rose-500/50 text-rose-200';
-                feedbackEl.innerHTML = `<i class="fa-solid fa-circle-xmark text-rose-400 mr-2"></i> <strong>Falsch.</strong> ${q.explanation}`;
-            }
-
-            feedbackEl.classList.remove('hidden');
-            nextBtn.classList.remove('hidden');
-              }
-
-        function nextQuestion() {
-            currentQuizIndex++;
-            renderQuiz();
-        }
-
-        function restartQuiz() {
-            currentQuizIndex = 0;
-            quizScore = 0;
-            renderQuiz();
-        }
-
-        function openModal(sportId) {
-            const s = sportsData.find(item => item.id === sportId);
-            if (!s) return;
-
-            const content = document.getElementById('modalContent');
-            content.innerHTML = `
-                <div class="flex items-center gap-3 mb-4">
-                    <span class="p-3 bg-deRed/10 text-deRed rounded-xl text-xl">
-                        <i class="fa-solid ${s.icon}"></i>
-                    </span>
-                    <div>
-                        <h3 class="text-2xl font-black text-gray-900 dark:text-white">${s.titleDe}</h3>
-                        <p class="text-xs font-semibold text-gray-500">${s.titleEn}</p>
-                    </div>
-                </div>
-
-                <div class="space-y-4 text-gray-600 dark:text-gray-300 text-sm leading-relaxed">
-                    <div>
-                        <h4 class="text-xs font-extrabold uppercase tracking-wider text-deRed mb-1">Geschichte & Bedeutung</h4>
-                        <p>${s.history}</p>
-                    </div>
-
-                    <div>
-                        <h4 class="text-xs font-extrabold uppercase tracking-wider text-deRed mb-1">Bekannte Sportler & Legenden</h4>
-                        <div class="flex flex-wrap gap-2 mt-1">
-                            ${s.athletes.map(a => `<span class="px-2.5 py-1 rounded-lg bg-gray-100 dark:bg-slate-700 text-xs font-bold text-gray-700 dark:text-gray-200">${a}</span>`).join('')}
-                         </div>
-                    </div>
-
-                    <div class="p-3 rounded-xl bg-deGold/10 border border-deGold/30 text-yellow-800 dark:text-deGold text-xs font-medium">
-                        <i class="fa-solid fa-lightbulb mr-1"></i> Wichtiger Begriff: <strong>${s.keyTerm}</strong>
-                    </div>
-                </div>
-            `;
-
-                 document.getElementById('sportModal').classList.remove('hidden');
-        }
-
-        function closeModal() {
-            document.getElementById('sportModal').classList.add('hidden');
-        }
-
-        // Dark mode toggle
-        function toggleDarkMode() {
-            document.documentElement.classList.toggle('dark');
-        }
+</body>
+</html>

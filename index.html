@@ -490,6 +490,26 @@
         // Initial Load
         renderNav();
         renderCards();
+        function searchSport() {
+    // Get the user's typed search text
+    const input = document.getElementById('sport-search').value.toLowerCase();
+    
+    // Get all sport cards on the page
+    const sports = document.querySelectorAll('.sport-item');
+
+    // Loop through each sport card
+    sports.forEach(sport => {
+        // Get the title text (e.g. "Fußball")
+        const title = sport.querySelector('h2').innerText.toLowerCase();
+
+        // If the title contains the search text, show it; otherwise hide it
+        if (title.includes(input)) {
+            sport.style.display = 'block';
+        } else {
+            sport.style.display = 'none';
+        }
+    });
+}
     </script>
 </body>
   <!-- Header -->

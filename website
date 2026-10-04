@@ -1,7 +1,38 @@
-
+<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <title>Website</title>
+    <title>Bright Future School</title>
+    <link rel="stylesheet" href="styles.css">
+    <meta charset="utf-8">
+</head>
+<body>
+
+    <h1>Bright Future School</h1>
+
+    <section id="first section">
+        <h2>About Our School</h2>
+        <p>Welcome to Bright Future School! We provide high-quality education, modern classrooms, and a supportive environment for all students.</p>
+    </section>
+
+    <hr>
+
+    <div>
+        <h2>Our Classes & Subjects</h2>
+        <section id="Second section">
+            <p>Mathematics & Science<br>English & Literature<br>Computer Science & IT<br>Art, Music & Sports</p>
+        </section>
+    </div>
+
+    <hr>
+
+    <div>
+        <section id="third section">
+            <h2>How to Contact Us</h2>
+            <p>By phone: 0123456789<br>By email: info@brightfutureschool.edu<br>Address: 123 Education Street</p>
+        </section>
+    </div>
+
+</body>
+</html>
 
 
